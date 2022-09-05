@@ -23,12 +23,13 @@ app.post("/", function (req, res) {
       var temprature = weather.main.temp;
       var icon = weather.weather[0].icon;
       var imageUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
-      var description=weather.weather[0].description;
+      var description = weather.weather[0].description;
+      res.write("<p>The Weather is " + description + ".</p>");
+
       res.write(
-        "<h1>The temprature of " + cityinput + " is " + temprature + ".</h1>"
+        "<h1>The temprature of " + cityinput + " is " + temprature + " degree celsius.</h1>"
       );
-      res.write("<h1>The description of "+ cityinput+ " is "+ description +".</h1>")
-      res.write("<img src="+imageUrl+">");
+      res.write("<img src=" + imageUrl + ">");
       res.send();
     });
   });
